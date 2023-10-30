@@ -1,0 +1,103 @@
+<% include ./partials/header.ejs %>
+
+  <link rel="stylesheet" href="../stylesheets/style.css">
+
+  <div id="main">
+
+    <div id="profile-box">
+
+      <form style="display: none;" enctype="multipart/form-data" action="/uploads" method="post">
+        <input class="inputfile" type="file" name="profileimage">
+        <input class="submit" type="submit">
+      </form>````
+      <!-- multer upload routers -->
+
+      <div class="container d-flex p-4" style="gap: 20px; margin-left: 3vw;">
+        <div class="card" style="width: 18rem; padding: 2rem;">
+          <div
+            style="position: relative; max-width: 5rem; height: 5rem; border-radius: 10px; background-color: #dadada; overflow: hidden;"
+            class="circle">
+            <img style=" position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); height: 17vh;"
+              src="/images/uploads/<%= user.profileimage %>" alt="">
+          </div>
+
+          <div class="card-body">
+            <h5 style="margin-top: 1.4vh; font-family: gilroy; font-size: 1.5rem;" class="card-title">
+              <%= user.username %>
+            </h5>
+            <p style="margin-top: .5vh;" class="card-text">
+              <%= user.email %>
+            </p>
+            <button id="edit-prf" ><h1>EDIT PROFILE</h1></button>
+            <!-- <small>Liked by <span><%= user.like.length %></span> people</small> -->
+          </div>
+        </div>
+      </div>
+      <!-- profile image and profile data -->
+
+    </div>
+
+    <div id="posting">
+
+      <div style="position: relative; left: 4vw;" id="create-post">
+
+        <h1 style="font-size: 1.8rem; font-family: gilroy; margin-top: 1.6vh;">Create a post</h1>
+        
+        <form action="/post" method="post">
+          <h2 style="font-size: 1.1rem; font-family: gilroy; margin-top: 1.9vh;">What's on your mind?</h2>
+          <textarea class="form-control" name="postdets" id="exampleFormControlTextarea1" placeholder="You..."
+            rows="4"></textarea>
+          <button id="post-btn" type="submit">Create Post</button>
+        </form>
+
+      </div>
+      <!-- post router of users -->
+
+      <div id="postpro">
+
+        <% user.post.reverse().forEach(function(posts){ %>
+          <div id="post-container">
+            <div id="post-box">
+              <div class="post-profile">
+                <img style="height: 7vh;" src="/images/uploads/<%= user.profileimage %>" alt="">
+              </div>
+              <div class="post-username">
+                <h4><%= user.username %></h4>
+              </div>
+              <div class="text-data">
+                <p class="card-text"><%= posts.postdets %></p>
+              </div>
+              <a id="like" href="/like/<%= posts._id %>" class="btn btn-primary mt-3"><h1>LIKE <%= posts.like.length %></h1></a>
+            </div>  
+          </div>
+          <% }) %>
+
+      </div>
+      <!-- post data of user -->
+
+    </div>
+
+  </div>
+
+  <script>
+
+    document.querySelector(".circle").addEventListener("click", function () {
+      document.querySelector(".inputfile").click();
+    });
+    document.querySelector(".inputfile").addEventListener("change", function () {
+      document.querySelector(".submit").click();
+    })
+
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+      var scrollpos = localStorage.getItem('scrollpos');
+      if (scrollpos) window.scrollTo(0, scrollpos);
+    });
+
+    window.onbeforeunload = function (e) {
+      localStorage.setItem('scrollpos', window.scrollY);
+    };
+
+  </script>
+
+  <% include ./partials/footer.ejs %>

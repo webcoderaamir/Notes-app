@@ -1,0 +1,31 @@
+<% include ./partials/header.ejs %>
+
+  <div style="width: 100%; height: 92%; margin-top: 0%;" id="postpro">
+
+    <% post.reverse().forEach(function(posts){ %>
+      <div id="post-container" style="width: 90%;">
+        <div id="post-box" style="width: 80%;">
+          <div class="post-profile">
+            <img style="height: 7vh;" src="../images/uploads/<%= posts.user?.profileimage %>" alt="">
+          </div>
+          <div class="post-username">
+            <h4 style="font-size: 1rem; position: absolute; top: 30%; margin-left: 1.7vw; color: black;">
+              <%= posts.user?.username %>
+            </h4>
+          </div>
+          <div class="text-data" style="width: 80%;">
+            <p class="card-text">
+              <%= posts.postdets %>
+            </p>
+          </div>
+          <a id="like"href="/like/<%= posts._id %>" class="btn btn-primary mt-3"><h1>LIKE <%= posts.like.length %></h1></a>
+
+        </div>
+      </div>
+      <% }) %>
+
+  </div>
+
+  
+
+  <% include ./partials/footer.ejs %>

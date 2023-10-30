@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport</title>
+  <link rel="stylesheet" href="../stylesheets/register.css">
+</head>
+
+<body>
+
+  <form action="/register" method="post">
+    <h1>Register here</h1>
+    <input id="usernameinp" type="text" placeholder="  Username" name="username">
+    <input type="email" placeholder="  Email" name="email">
+    <input type="number" placeholder="  Contact" name="number">
+    <input type="password" placeholder="  Password" name="password">
+    <input id="submitinp" type="submit">
+    <h2>If you're already user <span><a href="/login">Login Here</a></span></h2>
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+    integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    var inp = document.querySelector("#usernameinp")
+    inp.addEventListener("input", function () {
+      var val = inp.value;
+      if (val.trim().length > 0) {
+        axios.get(`/check/${val}`)
+          .then(function (data) {
+            if (data.data.found) {
+              document.querySelector("#submitinp").setAttribute("disabled", true)
+              inp.style.outlineColor = "red";
+            }
+            else {
+              document.querySelector("#submitinp").removeAttribute("disabled", false)
+              inp.style.outlineColor = "black";
+            }
+          });
+      }
+      else {
+        document.querySelector("#submitinp").removeAttribute("disabled", false)
+        inp.style.outlineColor = "black";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #FFF7D4;
+    overflow-x: hidden;
+}
+
+#profile-box {
+    width: 25vw;
+    height: 93vh;
+    background-color: #CCD5AE;
+}
+
+.container {
+    /* background-color: rgb(228, 252, 186); */
+    background-color: #dadada;
+    width: 20vw;
+    height: 60vh;
+    border-radius: 30px;
+    margin-top: 3vh;
+}
+
+#posting {
+    width: 75vw;
+    height: 93vh;
+    background-color: #fff;
+}
+
+
+
+#main {
+    width: 100vw;
+    height: 93vh;
+    background-color: black;
+    display: flex;
+    overflow: hidden;
+}
+
+#navbar {
+    width: 100vw;
+    height: 7vh;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navlink {
+    width: 30%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#navlink a {
+    font-family: "gilroy";
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: black;
+}
+
+.logout {
+    width: 6vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logout:hover {
+    transform: scale(.9);
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}
+
+.logout h1 {
+    font-size: 1.2rem;
+}
+
+#search {
+    margin-left: 20vw;
+}
+
+.search-user {
+    width: 24vw;
+    height: 5vh;
+    padding-left: 1.5vw;
+    outline: none;
+    border-radius: 15px;
+    outline: none;
+    border: 1px solid cadetblue;
+}
+
+#home {
+    font-family: "gilroy";
+    margin-left: 4vw;
+    font-size: 1.3rem;
+}
+
+#userbox {
+    /* height: 20%; */
+    max-height: 300px;
+    box-shadow: 0 0 2px #dadada;
+    background-color: #fff;
+    width: 23.8vw;
+    margin-left: 37vw;
+    position: absolute;
+    overflow: auto;
+    z-index: 9;
+    top: 6vh;
+    /* overflow-y: auto; */
+    /* display: none; */
+}
+
+#userbox::-webkit-scrollbar {
+    display: none;
+}
+
+#userbox::-webkit-scrollbar-thumb {
+    background-color: #dadada;
+}
+
+.userid {
+    position: relative;
+    display: flex;
+    /* border-bottom: 1px solid black; */
+    align-items: center;
+    justify-content: space-around;
+    width: 24rem;
+    height: 3rem;
+    /* background-color: green; */
+    /* left: 37%; */
+    top: -1.1vh;
+}
+
+.profile {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    /* background-color: blue; */
+    overflow: hidden;
+    margin-top: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.username {
+    position: relative;
+    right: 8rem;
+}
+
+#post-btn {
+    background-color: darkcyan;
+    color: #fff;
+    width: 50vw;
+    height: 6vh;
+    margin-top: 0vh;
+    /* margin-left: 4vw; */
+    font-family: "gilroy";
+    font-size: 1.2rem;
+
+}
+
+#like {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 6vw;
+    height: 4vh;
+}
+
+#like h1 {
+    font-size: .85rem;
+}
+
+#postpro::-webkit-scrollbar {
+    display: none;
+}
+
+.form-control {
+    resize: none;
+    width: 50vw;
+    height: 15vh;
+    padding: 1vw;
+    font-family: gilroy;
+    font-size: 1.2rem;
+    margin-top: 1vh;
+}
+
+#postpro {
+    background-color: #F0F0F0;
+    height: 59vh;
+    width: 71vw;
+    margin-top: 1.2vh;
+    position: relative;
+    /* left: 26vw; */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#post-container {
+    width: 65vw;
+    height: 25vh;
+    /* background: cadetblue; */
+    background-color: #dadada;
+    position: relative;
+    margin-top: 2vh;
+    margin-left: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+
+#post-box {
+    position: relative;
+    height: 16vh;
+    width: 56vw;
+    border-radius: 30px;
+    background-color: #dadada;
+    /* background: cadetblue; */
+}
+
+
+.text-data {
+    /* background-color: #dadada; */
+    background-color: darkcyan;
+    color: white;
+    font-family: "gilroy";
+    font-size: 1.2rem;
+    border: 1px solid black;
+    width: 42vw;
+    position: relative;
+    left: 10vw;
+    top: -3vh;
+    padding: 1vw;
+    border-radius: 10px;
+    height: 12vh;
+    margin-top: 1vh;
+}
+
+
+.post-profile {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    top: 3.7vh;
+    /* margin-top: 1vh; */
+    background-color: #dadada;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: -1vw;
+}
+
+#posts-like {
+    margin-left: 2vw;
+    position: absolute;
+    bottom: 2vh;
+}
+
+#like {
+    text-decoration: none;
+    font-family: "gilroy";
+    position: absolute;
+    top: 9vh;
+    margin-left: 1vw;
+    background-color: darkcyan;
+    font-size: 1rem;
+    color: white;
+}
+
+.post-username h4{
+    font-size: 1rem;
+    position: absolute;
+    top: 31%;
+    margin-left: 1.7vw;
+    color: black;
+}
+
+#edit-prf{
+    width: 8vw;
+    height: 4vh;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2vh;
+    cursor: pointer;
+}
+
+#edit-prf h1{
+    font-family: "gilroy";
+    color: #fff;
+    font-size: 1rem;
+}

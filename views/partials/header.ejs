@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport</title>
+  <link rel="stylesheet" href="../../stylesheets/style.css">
+</head>
+
+<body>
+
+  <div id="navbar">
+
+    <div id="home"><a style="text-decoration: none; color: black;" href="/">HOME</a></div>
+    <div id="search">
+      <input class="search-user" type="search" type="search" placeholder="Search Karo ❤️de">
+    </div>
+    <div id="navlink">
+      <a href="/">REGISTER</a>
+      <a href="/profile">PROFILE</a>
+      <a href="/feed">FEED</a>
+      <a class="logout" style="background-color: red; color: aliceblue; border-radius: 5px;" href="/logout">
+        <h1>LOGOUT</h1>
+      </a>
+    </div>
+
+  </div>
+
+  <div id="userbox">
+
+
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+    integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+
+    var inp = document.querySelector(".search-user")
+    inp.addEventListener("input", function () {
+      if (inp.value.trim().length > 0) {
+        // document.querySelector("#userbox").style.display = "block";
+        axios.get(`/find/${inp.value}`)
+          .then(function (reply) {
+            var clutter = ``
+            reply.data.allusers.forEach(function (member) {
+              clutter += `
+    <a style="text-decoration: none; color: black;" href="/user/profile/${member._id}">
+      <div class="userid">
+        <div class="profile"><img style="height: 2.5rem;" src="/images/uploads/${member.profileimage}" alt=""></div>
+        <div class="username">
+          <h4 style="font-size: 1.2rem; margin-left: 2vw;">@${member.username}</h4>
+        </div>
+      </div>
+    </a>`
+            })
+            document.querySelector("#userbox").innerHTML = clutter;
+          })
+      }
+      else {
+        // document.querySelector("#userbox").style.display = "none";
+        document.querySelector("#userbox").innerHTML = "";
+        //   inp.addEventListener("blur", function () {
+        //     document.querySelector("#userbox").innerHTML = "";
+        //   })
+      }
+    })
+
+
+
+  </script>
